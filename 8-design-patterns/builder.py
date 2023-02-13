@@ -49,5 +49,5 @@ burger = BurgerBuilder().addBuns("sesame").addPatty("fish patty").addCheese("swi
 
 # builder pattern commonly used for protocol buffers
 
-print(burger)
+print(burger) # ["sesame", "fish patty", "swiss cheese"]
 
