@@ -25,3 +25,52 @@
     - should be modularized (self-contained)
 - migrations  -- explains what kinds of changes a database needs to perform such as create a new table, establish a new relationship, etc
 - The Django admin interface allow us to quickly and easily access data that exists in the database. This means that users and groups, you can see here, are actually tables in our database.
+
+## How Django Interacts with Databases
+
+- ORMs
+    - Django has pre-defined user models, but you can create your own models.
+    - Django uses an object relational mapping system (ORM) to communicate with the database and handle changes.
+    - To create a model, you write a class with attributes that represent columns in the database table.
+    - Migrations are used to transform a model into a database table, and each migration specifies the changes to be made in the database.
+    - The "migrate" command applies migrations to the database, while the "make migrations" command creates migration space in the code.
+    - The ORM handles the process of creating a model, creating a migration, applying the migration to the database, and making changes.
+    - Django's ORM is considered one of the best for Python and SQL databases.
+    - Can use the command `python3 manage.py makemigrations` to make migrations which creates a set of instructions, then use `python3 manage.py migrate` to apply the migrations to the database
+
+- Django shell
+    - access by using `python3 manage.py shell` -- opens an interpreter tightly coupled with project
+    ```python
+    from notes.models import Notes
+    mynote = Notes.objects.get(pk='1')
+
+    In [3]: mynote.title
+    Out[3]: 'Django Tutorial'
+
+    In [4]: mynote.text
+    Out[4]: 'Get started with django'
+
+    # get all notes
+    Notes.objects.all() # <QuerySet [<Notes: Notes object (1)>]>
+
+    # create new note
+    new_note = Notes.objects.create(title="new note", text="this is a new note")
+
+    # search for notes
+    Notes.objects.filter(title__startswith="Django" #  <QuerySet [<Notes: Notes object (1)>]>
+
+
+    ```
+
+
+## Building Dynamic Webpages
+
+- Needs to create a urlpattern for the path, and include it also in the main project's `urls.py` file
+- Needs to create `template/< name of subfolder>/` then a file for the template using `html` extension
+
+
+## Building a Robust Frontend in Django
+## Django Forms: Validation Shouldn't Be Hard
+## Working with Existing Data
+## Using Django to Store and Display User-Specific Data
+## Login, Logout, and Signup Are Simple
