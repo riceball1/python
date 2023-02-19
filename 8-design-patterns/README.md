@@ -13,5 +13,7 @@ https://www.youtube.com/watch?v=tAuRQs_d9F8
 3:38 - Observer
 5:12 - Iterator
 6:28 - Strategy
+
+**structural patterns**
 7:18 - Adapter
 8:22 - Facade
