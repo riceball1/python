@@ -70,7 +70,17 @@
 
 
 ## Building a Robust Frontend in Django
+    - add static files to be able to inject css styles
+    - use a base template to make this easier
+        - use a base.html
 ## Django Forms: Validation Shouldn't Be Hard
+    - CreateView method
+    - adding a form using `{{form}}` and to ensure able to perform the POST need to add `{{% csrf_token %}}`, which stands for `cross-site request forgery`
+
+- Cross-site request forgery (CSRF) is a type of security vulnerability that can occur in web applications, including those built with Django. A CSRF attack happens when an attacker tricks a user into unknowingly performing an action on a website without their consent or knowledge
+- In Django, CSRF attacks can be prevented by using a built-in middleware called "CsrfViewMiddleware". This middleware provides protection by generating a unique token for each user session and including it in every form submission. When a user submits a form, Django checks that the token in the request matches the one in the session. If they don't match, the request is considered invalid and Django rejects it.
+- To ensure that your Django application is protected against CSRF attacks, you should make sure that the "CsrfViewMiddleware" is included in your middleware settings, and that all forms in your application include the CSRF token using the {% csrf_token %} template tag.
+
 ## Working with Existing Data
 ## Using Django to Store and Display User-Specific Data
 ## Login, Logout, and Signup Are Simple

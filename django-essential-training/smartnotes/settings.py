@@ -58,7 +58,8 @@ ROOT_URLCONF = "smartnotes.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # add this to be able to use base.html for extending templates
+        "DIRS": [BASE_DIR/ 'static/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
