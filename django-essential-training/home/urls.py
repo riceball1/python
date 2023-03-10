@@ -19,4 +19,7 @@ urlpatterns = [
 
      # login class-based view
     path('logout', views.LogoutInterfaceView.as_view(), name="logout"),
+
+    # register class-based view
+    path('signup', views.SignupView.as_view(), name="signup"),
 ]
