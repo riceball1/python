@@ -88,3 +88,14 @@
     - foreignkey - a link between two different database tables; you cando this by adding a `foreignkey` in the models.py
 
 ## Login, Logout, and Signup Are Simple
+- make sure to add required login to redirect if log out: `from django.contrib.auth.mixins import LoginRequiredMixin` 
+
+```python
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
+
+class MyView(LoginRequiredMixin, TemplateView):
+    template_name = 'my_template.html'
+    login_url = '/accounts/login/'
+    redirect_field_name = 'next'
+```

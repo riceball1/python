@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1 class="my-5">There are the notes:</h1>
-
+  <a href="{%  url 'logout' %}"  class="btn btn-danger">Logout</a>
   <div class="row row-cols4 g-2">
     {% for note in notes %}
     <div class="col">
@@ -15,4 +15,6 @@
       {% endfor %}
     </div>
   </div>
+
+
 {% endblock%}
