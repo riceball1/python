@@ -1,11 +1,23 @@
 from django.shortcuts import render
-# from django.http import Http404
-from django.views.generic import CreateView, DetailView, ListView
+from django.http import HttpResponseRedirect
+from django.views.generic import UpdateView, CreateView, DetailView, ListView
+from django.views.generic.edit import DeleteView
 
 from .forms import NotesForm
 from .models import Notes
 
 # CLASS-BASED VIEWS
+
+class NotesDeleteView(DeleteView):
+    model = Notes
+    success_url = '/smart/notes'
+    template_name = 'notes/notes_delete.html'
+
+
+class NotesUpdateView(UpdateView):
+    model = Notes
+    success_url = '/smart/notes'
+    form_class = NotesForm
 
 class NotesCreateView(CreateView):
     model = Notes # endpoint knows what it's regarding to
@@ -15,10 +27,23 @@ class NotesCreateView(CreateView):
     # pass this instead of the fields
     form_class = NotesForm
 
+    # override method to include user's id
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
 class NotesListView(ListView):
     model = Notes
     context_object_name = "notes"
     template_name = "notes/notes_list.html"
+    # must be login to see notes
+    login_url = "/admin"
+
+    # override get_queryset method
+    def get_queryset(self):
+        return self.request.user.notes.all()
 
 class NotesDetailView(DetailView):
     model = Notes

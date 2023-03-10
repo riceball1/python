@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+ 
+<form  method="POST" class="d-flex flex-column justify-content-center"> {% csrf_token %}
+    <p>Are you sure you want to delete "{{note.title}}"?</p>
+    <p>This action can't be undone.</p>
+    <button class="btn btn-danger my-5">Confirm</button>
+</form>
+{% endblock%}

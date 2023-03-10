@@ -15,6 +15,12 @@ urlpatterns = [
     # path('notes/<int:pk>', views.detail)
     path('notes/<int:pk>', views.NotesDetailView.as_view(), name="notes.detail"),
 
+    # path for updating notes
+    path('notes/<int:pk>/edit', views.NotesUpdateView.as_view(), name="notes.update"),
+
+    # path for deleting notes
+    path('notes/<int:pk>/delete', views.NotesDeleteView.as_view(), name="notes.delete"),
+
 
     # path to create new notes
     path('notes/new', views.NotesCreateView.as_view(), name="notes.new"),

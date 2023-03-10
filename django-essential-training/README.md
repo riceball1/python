@@ -17,7 +17,7 @@
     - then in urls.py must add a pathway to import views.home to be shown when the request for `home/` is accessed
 - Changes to the database by running command `python3 manage.py migrate`
 - create superuser `python3 manage.py createsuperuser` -- used `username: admin, password: admin`
-
+- check out page: `http://127.0.0.1:8000/home/`
 
 ## Notes
 - - MVT (model-view-template)
@@ -82,5 +82,9 @@
 - To ensure that your Django application is protected against CSRF attacks, you should make sure that the "CsrfViewMiddleware" is included in your middleware settings, and that all forms in your application include the CSRF token using the {% csrf_token %} template tag.
 
 ## Working with Existing Data
+    - CRUD operations
+    - using forms
 ## Using Django to Store and Display User-Specific Data
+    - foreignkey - a link between two different database tables; you cando this by adding a `foreignkey` in the models.py
+
 ## Login, Logout, and Signup Are Simple

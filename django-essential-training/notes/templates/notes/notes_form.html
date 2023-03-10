@@ -2,8 +2,8 @@
 
 {% block content %}
  
-
-<form action="{% url 'notes.new' %}" method="POST" class="d-flex flex-column justify-content-center"> {% csrf_token %}
+{# do not need to hardcode action="{% url 'notes.new' %}" the form can determine where to redirect to #}
+<form  method="POST" class="d-flex flex-column justify-content-center"> {% csrf_token %}
     {{form.as_div}}
     {% if form.errors %} 
     <div class="alert alert-danger my-5">
@@ -11,5 +11,6 @@
     </div>
 {% endif %}
     <button class="btn btn-primary my-5">Submit</button>
+    <a href="{% url 'notes.list' %}" class="btn btn-secondary my-5">Cancel</a>
 </form>
 {% endblock%}
